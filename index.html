@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      height: 100px;
+      width: 75%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: lavender;
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    button {
+      margin: 20px;
+      height: 30px;
+      width: 100px;
+      border-radius: 10px;
+      background-color: rgb(125, 125, 255);
+      border: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box" id="box">
+    </div>
+    <button id="next" onclick="find()"></button>
+  </div>
+
+<script>
+  let box = document.querySelector("#box");
+  let i = 1;
+  let next = document.getElementById("next")
+  var randomno = Math.floor(Math.random() * 100);
+  var answer = (randomno/2);
+  text = ["एक नंबर सोचो 100 के अंदर", "उतने ही अपने फ्रेंड के सोचो", `उसमें मेरे ${randomno} ऐड करो `, "नंबर को टोटल करके उसका आधा करो","जितनी अपने दोस्त के नंबर सोचे थे उसको वापस कर दो |",` your answer is: ${answer}`]
+  console.log(text)
+  next.innerHTML = "Next";
+
+    if (randomno % 2 == 0) {
+      main();
+      
+    }
+    else {
+      location.reload();
+    }
+  function main() { 
+    box.innerHTML = text[0];
+
+  }
+  
+  function find(){
+    box.innerHTML = text[i++];
+    if(i == 6){
+      next.innerHTML = "Restart";
+      next.addEventListener('click',()=>{
+        location.reload();
+      })
+    }
+  }
+ 
+</script>
+</body>
+</html>
